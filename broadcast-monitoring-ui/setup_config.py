@@ -3,7 +3,7 @@ import sys
 import boto3
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-args = sys.argv[1:]
+args = 'broadcast-monitoring-VideoProcessingStack-1HD7OSWTPJ3F1'
 
 if not args:
     raise Exception('Name of video-processing stack missing.')
@@ -15,7 +15,7 @@ jinjaEnv = Environment(loader=FileSystemLoader('./'),
                        autoescape=select_autoescape())
 
 cfn_client = boto3.client('cloudformation')
-stack_name = args[0]
+stack_name = args
 
 response = cfn_client.describe_stacks(StackName=stack_name)["Stacks"]
 
